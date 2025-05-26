@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     public Transform cam;
     private Vector3 movementDirection;
+    public bool visibleCursor;
+    public bool firingAbility = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Cursor.visible = false;
+        Cursor.visible = visibleCursor;
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
@@ -46,7 +48,17 @@ public class PlayerController : MonoBehaviour
     }
     void handleRotation()
     {
-        if (movementDirection != Vector3.zero)
+        if (firingAbility)
+        {
+            // Get the main camera's forward direction (Cinemachine controls this)
+            Vector3 cameraForward = Camera.main.transform.forward;
+            cameraForward.y = 0f; // Ignore vertical tilt
+            cameraForward.Normalize();
+
+            Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+        }
+        else if (movementDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);

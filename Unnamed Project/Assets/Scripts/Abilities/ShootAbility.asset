@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6e26dcb35d9a54bbb038a605a8d6d8, type: 3}
+  m_Name: ShootAbility
+  m_EditorClassIdentifier: 
+  abiltiyName: ShootAbility
+  cooldown: 0.25
+  activationKey: 323
+  isHoldToUse: 1
+  damage: 5
+  range: 100
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  tracerDuration: 0.05
+  lineRenderer: {fileID: 0}
