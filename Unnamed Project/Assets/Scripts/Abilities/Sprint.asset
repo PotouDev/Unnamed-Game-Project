@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0342326c60b924f99e7f404c5424d3, type: 3}
   m_Name: Sprint
   m_EditorClassIdentifier: 
-  abiltiyName: New Ability
+  abiltiyName: Sprint
   cooldown: 0
   activationKey: 304
   isHoldToUse: 1

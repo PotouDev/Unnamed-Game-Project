@@ -8,30 +8,21 @@ public class SprintAbility : Ability
 {
     private float originalSpeed;
     public float speedMultiplier = 1.25f;
-    PlayerController controller;
-
-
     public override void Activate(GameObject user)
     {
-        controller = user.GetComponent<PlayerController>();
-        controller.moveSpeed = originalSpeed;
-        originalSpeed = controller.moveSpeed;
+        PlayerController controller = user.GetComponent<PlayerController>();
         if (controller != null)
         {
-         
-            if (controller.moveSpeed <= 10f)
-            {
-                controller.moveSpeed *= speedMultiplier;
-               
-            }
-            else
-            {
-                controller.moveSpeed = originalSpeed;
-            }
+            originalSpeed = controller.moveSpeed;
+            controller.moveSpeed *= speedMultiplier;
         }
     }
     public override void Deactivate(GameObject user)
     {
-        controller.moveSpeed = originalSpeed;
+        PlayerController controller = user.GetComponent<PlayerController>();
+        if (controller != null)
+        {
+            controller.moveSpeed = originalSpeed;
+        }
     }
 }
