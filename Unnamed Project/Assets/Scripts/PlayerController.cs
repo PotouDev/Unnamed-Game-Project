@@ -6,8 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public float jumpForce;
-    public float sprintMultiplier = 2f;
-    public float baseMovespeed;
     private Rigidbody rb;
     public Transform cam;
     private Vector3 movementDirection;
@@ -20,12 +18,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Cursor.visible = visibleCursor;
         Cursor.lockState = CursorLockMode.Locked;
-        baseMovespeed = moveSpeed;
     }
     void Update()
     {
         handleJump();
-        handleSprint();
     }
     private void FixedUpdate()
     {
@@ -83,17 +79,4 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
-    void handleSprint()
-    {
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            moveSpeed = baseMovespeed * sprintMultiplier;
-        }
-        else
-        {
-            if ()
-            moveSpeed = 
-        }
-    }
-
 }
